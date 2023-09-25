@@ -4,7 +4,7 @@ extends Node
 #   OnlineMatch.max_players = 8
 #   OnlineMatch.client_version = 'v1.2'
 var min_players := 2
-var max_players := 4
+var max_players := 2
 var client_version := 'dev'
 
 # Nakama variables:
@@ -29,11 +29,7 @@ enum MatchState {
 	READY = 4,
 	PLAYING = 5,
 }
-var match_state: int = MatchState.LOBBY :
-	set (value):
-		_set_readonly_variable(value)
-	get: 
-		return get_match_state()
+var match_state: int = MatchState.LOBBY 
 
 enum MatchMode {
 	NONE = 0,

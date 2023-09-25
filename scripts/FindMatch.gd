@@ -8,6 +8,8 @@ func _ready():
 
 func OnMatchFound(players):
 	print(players)
+	hide()
+	get_parent().get_node("ReadyScreen").visible = true
 
 
 func _on_find_match_button_down():

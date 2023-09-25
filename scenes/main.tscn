@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcm8prjq2wqvj"]
+[gd_scene load_steps=5 format=3 uid="uid://bcm8prjq2wqvj"]
 
 [ext_resource type="Script" path="res://scripts/Login.gd" id="1_rhy6u"]
 [ext_resource type="Script" path="res://scripts/FindMatch.gd" id="2_vs2jd"]
+[ext_resource type="Script" path="res://scripts/ReadyScreen.gd" id="3_y08xg"]
+[ext_resource type="PackedScene" uid="uid://bavsqpddm2i4j" path="res://scenes/user_ready.tscn" id="4_uwqss"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_vertical_guides_ = []
@@ -95,6 +97,19 @@ offset_right = 337.0
 offset_bottom = 219.0
 text = "Register"
 
+[node name="ErrorLabel" type="Label" parent="Control/Login"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="FindMatch" type="Control" parent="Control"]
 visible = false
 layout_mode = 1
@@ -144,7 +159,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_y08xg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ReadyScreen"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 20.0
+offset_right = 397.0
+offset_bottom = 191.0
+
+[node name="UserReady" parent="Control/ReadyScreen/VBoxContainer" instance=ExtResource("4_uwqss")]
+layout_mode = 2
+
+[node name="ReadyButton" type="Button" parent="Control/ReadyScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -73.0
+offset_right = 102.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ready"
 
 [connection signal="button_down" from="Control/Login/LoginButton" to="Control/Login" method="_on_login_button_down"]
 [connection signal="button_down" from="Control/Login/RegisterButton" to="Control/Login" method="_on_register_button_down"]
 [connection signal="button_down" from="Control/FindMatch/FindMatchButton" to="Control/FindMatch" method="_on_find_match_button_down"]
+[connection signal="button_down" from="Control/ReadyScreen/ReadyButton" to="Control/ReadyScreen" method="_on_ready_button_down"]
